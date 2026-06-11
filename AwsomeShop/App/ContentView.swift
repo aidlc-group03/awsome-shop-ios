@@ -8,10 +8,17 @@ struct ContentView: View {
         Group {
             if authManager.isLoggedIn {
                 NavigationStack(path: $router.path) {
-                    MainTabView()
-                        .navigationDestination(for: Route.self) { route in
-                            destinationView(for: route)
-                        }
+                    if authManager.currentUser?.role == .admin {
+                        AdminTabView()
+                            .navigationDestination(for: Route.self) { route in
+                                destinationView(for: route)
+                            }
+                    } else {
+                        MainTabView()
+                            .navigationDestination(for: Route.self) { route in
+                                destinationView(for: route)
+                            }
+                    }
                 }
                 .environmentObject(router)
             } else {
