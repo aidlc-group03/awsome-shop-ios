@@ -1,0 +1,68 @@
+name: AwsomeShop
+options:
+  bundleIdPrefix: com.awsome
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+
+targets:
+  AwsomeShop:
+    type: application
+    platform: iOS
+    sources:
+      - path: AwsomeShop
+        excludes:
+          - "Package.swift"
+    settings:
+      base:
+        INFOPLIST_FILE: AwsomeShop/Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.awsome.shop
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    info:
+      path: AwsomeShop/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: AWSome Shop
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundlePackageType: APPL
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        UILaunchScreen:
+          UIColorName: ""
+          UIImageName: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+
+schemes:
+  AwsomeShop:
+    build:
+      targets:
+        AwsomeShop: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
